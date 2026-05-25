@@ -115,89 +115,14 @@ namespace vsgWin32
 
         vsg::KeySymbol mapCharToKeySymbol(wchar_t ch)
         {
-            // Letters
-            if (ch >= L'A' && ch <= L'Z')
-            {
-                return static_cast<vsg::KeySymbol>(ch);  // Capital
-            }
-            if (ch >= L'a' && ch <= L'z')
-            {
-                return static_cast<vsg::KeySymbol>(ch);
-            }
-
-            // Digits
-            if (ch >= L'0' && ch <= L'9')
-            {
-                return static_cast<vsg::KeySymbol>(ch);
-            }
-
             // Special characters (with and without Shift)
             switch (ch)
             {
-            case L'!': return vsg::KEY_Exclaim;
-            case L'\"': return vsg::KEY_Quotedbl;
-            case L'#': return vsg::KEY_Hash;
-            case L'$': return vsg::KEY_Dollar;
-            case L'%': return vsg::KEY_Percent;
-            case L'&': return vsg::KEY_Ampersand;
-            case L'\'': return vsg::KEY_Quote;
-            case L'(': return vsg::KEY_Leftparen;
-            case L')': return vsg::KEY_Rightparen;
-            case L'*': return vsg::KEY_Asterisk;
-            case L'+': return vsg::KEY_Plus;
-            case L',': return vsg::KEY_Comma;
-            case L'-': return vsg::KEY_Minus;
-            case L'.': return vsg::KEY_Period;
-            case L'/': return vsg::KEY_Slash;
-            case L':': return vsg::KEY_Colon;
-            case L';': return vsg::KEY_Semicolon;
-            case L'<': return vsg::KEY_Less;
-            case L'=': return vsg::KEY_Equals;
-            case L'>': return vsg::KEY_Greater;
-            case L'?': return vsg::KEY_Question;
-            case L'@': return vsg::KEY_At;
-            case L'[': return vsg::KEY_Leftbracket;
-            case L'\\': return vsg::KEY_Backslash;
-            case L']': return vsg::KEY_Rightbracket;
-            case L'^': return vsg::KEY_Caret;
-            case L'_': return vsg::KEY_Underscore;
-            case L'`': return vsg::KEY_Backquote;
-            case L'{': return vsg::KEY_Leftcurlybracket;
-            case L'|': return vsg::KEY_Verticalslash;
-            case L'}': return vsg::KEY_Rightcurlybracket;
-            case L'~': return vsg::KEY_Tilde;
-
-            // Whitespace and control characters
-            case L' ': return vsg::KEY_Space;
             case L'\t': return vsg::KEY_Tab;
             case L'\r': return vsg::KEY_Return;
             }
 
-            // Return for other non-ASCII
-            return mapUnicodeToKeySymbol(ch);
-        }
-
-        // Helper function for Unicode cahracters
-        vsg::KeySymbol mapUnicodeToKeySymbol(wchar_t ch)
-        {
-            switch (ch)
-            {
-            case L' ': return vsg::KEY_Space;
-            case L'\t': return vsg::KEY_Tab;
-            case L'\r': return vsg::KEY_Return;
-            case L',': return vsg::KEY_Comma;
-            case L'.': return vsg::KEY_Period;
-            case L'/': return vsg::KEY_Slash;
-            case L';': return vsg::KEY_Semicolon;
-            case L'=': return vsg::KEY_Equals;
-            case L'-': return vsg::KEY_Minus;
-            case L'[': return vsg::KEY_Leftbracket;
-            case L']': return vsg::KEY_Rightbracket;
-            case L'\\': return vsg::KEY_Backslash;
-            case L'`': return vsg::KEY_Tilde;
-            case L'\'': return vsg::KEY_Quote;
-            default: return static_cast<vsg::KeySymbol>(ch);
-            }
+            return static_cast<vsg::KeySymbol>(ch);
         }
 
         VirtualKeyToKeySymbolMap _vk2vsg;
